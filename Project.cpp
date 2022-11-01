@@ -1,11 +1,10 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-
-#include <vector>
 
 
 //doctors data
-class doctor{
+class doctor
+{
     public:
     string name;
     string department;
@@ -19,7 +18,8 @@ class doctor{
 };
 
 //patients data
-class patient: public doctor{
+class patient: public doctor
+{
     public:
     string st_name;
     string dep;
@@ -33,15 +33,25 @@ class patient: public doctor{
 };
 
 void Insert(doctor* head,doctor* doc) {
-    doctor* temp = head ;
-    if(head == NULL) head = doc ;
+    doctor* temp = head;
+    if(head == NULL) head = doc;
 
-    while(temp->next != NULL) temp = temp->next ;
-    temp->next = doc ;
+    while(temp->next != NULL) temp = temp->next;
+    temp->next = doc;
 
 }
 
-void Ddirectory(vector<doctor> &doctors){
+void d_directory(doctor* head)
+{
+    int i = 0;
+    while(head != NULL)
+    {
+        cout << i+1 << "." << head -> name << endl;
+        head = head -> next;
+    }
+}
+
+/*void Ddirectory(vector<doctor> &doctors){
     cout<<"Welcome to Doctors directory"<<endl;
     cout<<"\n";
     for(int i=0; i< doctors.size(); i++){
@@ -58,7 +68,7 @@ void Ddirectory(vector<doctor> &doctors){
 
     cout<<"\n";
     cout<<"END"<<endl;
-}
+}*/
 
 void showEnd(){
     cout<<"Welcome to IITH Help-desk"<<endl;
@@ -77,7 +87,7 @@ void showEnd(){
     cin>>doc_service;
 
     if(doc_service == 1){
-        Ddirectory(doc);
+        //Ddirectory(doc);
     }
     else if(doc_service == 2){
         cout<<"1 -> To add new doctors details"<<endl;
@@ -148,10 +158,10 @@ void showEnd(){
             cin>>delete_name;
             for(auto i=doc.begin();i != doc.end(); i++) {
             
-                if(delete_name.compare(doc[i].name) == 1) {
-                    doc.erase(i) ;
-
-                }
+                //if(delete_name.compare(doc[i].name) == 1) {
+                //    doc.erase(i) ;
+//
+                //}
             }
         }
     }
@@ -171,13 +181,13 @@ int main(){
     cout<< "Manage Feedbacks" << endl ;
     cout<<"1 -> "
     //Vector for storing all doctors data
-    vector<doctor> doc;
+    //vector<doctor> doc;
 
     int doc_service;
     cin>>doc_service;
 
     if(doc_service == 1){
-        Ddirectory(doc);
+        //Ddirectory(doc);
     }
     else if(doc_service == 2){
         cout<<"1 -> To add new doctors details"<<endl;
@@ -227,7 +237,7 @@ int main(){
             cin>>NoP;
             d.NoP = NoP;
 
-            doc.push_back(d);
+            //doc.push_back(d);
             cout<<"details successfully uploaded into doctors directory"<<endl;
             cout<<"\n";
             
