@@ -14,6 +14,7 @@ class doctor{
     float rating;
     string phone;
     string mail;
+    doctor* next;
     int NoP;
 };
 
@@ -30,6 +31,15 @@ class patient: public doctor{
     string history;
     int ethics_rating;
 };
+
+void Insert(doctor* head,doctor* doc) {
+    doctor* temp = head ;
+    if(head == NULL) head = doc ;
+
+    while(temp->next != NULL) temp = temp->next ;
+    temp->next = doc ;
+
+}
 
 void Ddirectory(vector<doctor> &doctors){
     cout<<"Welcome to Doctors directory"<<endl;
@@ -136,7 +146,13 @@ void showEnd(){
         else if(add_delete_doc == 2){
             string delete_name;
             cin>>delete_name;
-            // if(delete_name == )
+            for(auto i=doc.begin();i != doc.end(); i++) {
+            
+                if(delete_name.compare(doc[i].name) == 1) {
+                    doc.erase(i) ;
+
+                }
+            }
         }
     }
 }
@@ -152,6 +168,8 @@ int main(){
     cout<<"2 -> To add/delete doctors details"<<endl;
     cout<<"3 -> To edit present doctors details"<<endl;
     cout<<"\n";
+    cout<< "Manage Feedbacks" << endl ;
+    cout<<"1 -> "
     //Vector for storing all doctors data
     vector<doctor> doc;
 
