@@ -1,5 +1,8 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
+
+#include <vector>
+
 
 //doctors data
 class doctor{
