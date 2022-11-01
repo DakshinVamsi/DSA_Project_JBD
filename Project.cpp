@@ -6,6 +6,7 @@ using namespace std;
 class doctor
 {
     public:
+    doctor* next;
     string name;
     string department;
     string  type;
@@ -13,7 +14,6 @@ class doctor
     float rating;
     string phone;
     string mail;
-    doctor* next;
     int NoP;
 };
 
@@ -179,7 +179,7 @@ int main(){
     cout<<"3 -> To edit present doctors details"<<endl;
     cout<<"\n";
     cout<< "Manage Feedbacks" << endl ;
-    cout<<"1 -> "
+    cout<<"1 -> ";
     //Vector for storing all doctors data
     //vector<doctor> doc;
 
@@ -195,47 +195,7 @@ int main(){
         float add_delete_doc;
         cin>>add_delete_doc;
         if(add_delete_doc == 1){
-            string name;
-            string department;
-            string  type;
-            string  PoA;
-            float rating;
-            string phone;
-            string mail;
-            int NoP;
-
-            doctor d;
-            cout<<"Enter doctors name"<<" : ";
-            cin>>name;
-            d.name = name;
-
-            cout<<"Enter doctors department"<<" : ";
-            cin>>department;
-            d.department = department;
             
-            cout<<"Enter doctors type of employement"<<" : ";
-            cin>>type;
-            d.type = type;
-
-            cout<<"Enter doctors period of availability"<<" : ";
-            cin>>PoA;
-            d.PoA = PoA;
-
-            cout<<"Enter doctors rating"<<" : ";
-            cin>>rating;
-            d.rating = rating;
-
-            cout<<"Enter doctors mobile number"<<" : ";
-            cin>>phone;
-            d.phone = phone;
-
-            cout<<"Enter doctors email-id"<<" : ";
-            cin>>mail;
-            d.mail = mail;
-
-            cout<<"Enter number of patients he treated"<<" :" ;
-            cin>>NoP;
-            d.NoP = NoP;
 
             //doc.push_back(d);
             cout<<"details successfully uploaded into doctors directory"<<endl;

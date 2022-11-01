@@ -26,28 +26,46 @@ void d_directory(doctor* head)
 }
 
 void add_new(doctor d)
-{
+{    
+    string name;
+    string department;
+    string  type;
+    string  PoA;
+    float rating;
+    string phone;
+    string mail;
+    int NoP;
     cout<<"Enter doctors name"<<" : ";
-    cin>>d.name;
-    cout << endl;
+    cin>>name;
+    d.name = name;
 
     cout<<"Enter doctors department"<<" : ";
-    cin>>d.department;
-
+    cin>>department;
+    d.department = department;
+            
     cout<<"Enter doctors type of employement"<<" : ";
-    cin>>d.type;
+    cin>>type;
+    d.type = type;
 
     cout<<"Enter doctors period of availability"<<" : ";
-    cin>>d.PoA;
+    cin>>PoA;
+    d.PoA = PoA;
 
     cout<<"Enter doctors rating"<<" : ";
-    cin>>d.rating;
+    cin>>rating;
+    d.rating = rating;
 
     cout<<"Enter doctors mobile number"<<" : ";
-    cin>>d.phone;
+    cin>>phone;
+    d.phone = phone;
 
     cout<<"Enter doctors email-id"<<" : ";
-    cin>> d.mail;
+    cin>>mail;
+    d.mail = mail;
+
+    cout<<"Enter number of patients he treated"<<" :" ;
+    cin>>NoP;
+    d.NoP = NoP;
 }
 
 void about_doctor(doctor d)
