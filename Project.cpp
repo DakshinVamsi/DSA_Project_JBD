@@ -10,14 +10,14 @@ using namespace std;
 //doctors data
 class doctor{
     public:
-    string name;
-    string department;
-    string  type;
-    string  PoA;
-    float rating;
-    string phone;
-    string mail;
-    int NoP;
+    string name = "";
+    string department = "";
+    string  type = "";
+    string  PoA = "";
+    float rating = 0;
+    string phone = "";
+    string mail = "";
+    int NoP = -1;
 };
 
 class node{
