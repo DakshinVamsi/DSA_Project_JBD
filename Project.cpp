@@ -42,7 +42,6 @@ void insertEnd(node* &head, doctor val){
     }
     node* temp = head; 
 
-
     if(strcmp(val.name.c_str(),temp->doc.name.c_str())<0) {
         ptr->next = head ;
         head = ptr ;
@@ -50,14 +49,20 @@ void insertEnd(node* &head, doctor val){
 
     else {
 
-    while(temp->next != NULL || strcmp(val.name.c_str(),(temp->next->doc).name.c_str())>0)
+    while(temp->next != NULL )
     {
+        if(strcmp(val.name.c_str(),(temp->next->doc).name.c_str())<0) break ;
        temp = temp->next; 
     }
     // temp->next = ptr;
-    a = temp->next;
+    if(temp->next == NULL) {
     temp->next = ptr;
-    ptr->next = a ;
+    ptr->next = NULL ;}
+    else {
+        a = temp->next ;
+        temp ->next = ptr ;
+        ptr ->next = a ;
+    }
 } }
 
 void display(node* head){
@@ -112,6 +117,16 @@ bool search(node* &head, string val){
     return true;
 }
 
+void dep(node* head,string dept) {
+    node* temp = head ;
+    while(temp != NULL) {
+        if(temp->doc.department == dept) {
+            cout << temp->doc.name << " [ Contact Number: " << temp->doc.phone << " ; Mail ID: " << temp->doc.mail <<"]" <<endl;    
+        }
+        temp = temp->next ;
+    }
+}
+
 //patients data
 class patient: public doctor{
     public:
@@ -157,7 +172,8 @@ int main(){
         int doc_service;
         cin>>doc_service;
 
-            if(doc_service == 1){
+        switch(doc_service) {
+            case 1 :
                 cout<<endl;
                 cout<<"Doctors"<<endl;
                 display(head);
@@ -173,8 +189,8 @@ int main(){
                     else{
                         show = true;
                     }
-            }
-            else if(doc_service == 2){
+        
+            case 2 :
                 cout<<"1 -> To add new doctors details"<<endl;
                 cout<<"2 -> To delete present doctors details"<<endl;
                 cout<<"\n";
@@ -237,9 +253,7 @@ int main(){
                     outfile.open("name.txt", std::ios_base::app); // append instead of overwrite
                     outfile <<new_doctor.name; 
 
-                    cout<<"1 -> To view doctors directory"<<endl;
-                    cout<<"2 -> To add/delete doctors details"<<endl;
-                    cout<<"3 -> To edit present doctors details"<<endl;
+                    
                     cout<<"\n";
                     
                     cout<<"Do you want to exit?(yes/no)"<<endl;
@@ -265,8 +279,8 @@ int main(){
                         cout<<"Doctors name not found"<<endl;
                         cout<<"\n";
                     }
-                }
-                }
+                } }
+                
                 // else if(doc_service == 3) {
                 //     string edit_name ;
                 //     int edit_choice;
@@ -325,7 +339,7 @@ int main(){
                 //     else{
                 //         show = true;
                 //     }
-                // }            
+                // }           
     }
 
     
