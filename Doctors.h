@@ -20,60 +20,59 @@ class doctor{
 
 void doctor::add_new()
 {    
-    int NoP;
-    cout<<"Enter doctors name"<<" : ";
-    cin>>name;
+    cout<<"Enter doctors name : ";
+    cin >> name;
 
-    cout<<"Enter doctors department"<<" : ";
+    cout<<"Enter doctors department : ";
     cin>>department;
     //department = department;
             
-    cout<<"Enter doctors type of employement"<<" : ";
+    cout<<"Enter doctors type of employement : ";
     cin>>type;
     //d.type = type;
 
-    cout<<"Enter doctors period of availability"<<" : ";
+    cout<<"Enter doctors period of availability : ";
     cin>>PoA;
     //d.PoA = PoA;
 
-    cout<<"Enter doctors rating"<<" : ";
+    cout<<"Enter doctors rating : ";
     cin>>rating;
     //d.rating = rating;
 
-    cout<<"Enter doctors mobile number"<<" : ";
+    cout<<"Enter doctors mobile number : ";
     cin>>phone;
     //d.phone = phone;
 
-    cout<<"Enter doctors email-id"<<" : ";
+    cout<<"Enter doctors email-id : ";
     cin>>mail;
     //d.mail = mail;
 
-    cout<<"Enter number of patients he treated"<<" :" ;
+    cout<<"Enter number of patients he treated :" ;
     cin>>NoP;
     //d.NoP = NoP;
 }
 
 void doctor::about_doctor()
 {
-    cout<<"Name"<<" : ";
+    cout<<"Name : ";
     cout << name << endl;
 
-    cout<<"Department"<<" : ";
+    cout<<"Department : ";
     cout << department << endl;
 
-    cout<<"type of employement"<<" : ";
+    cout<<"type of employement : ";
     cout << type << endl;
 
-    cout<<"period of availability"<<" : ";
+    cout<<"period of availability : ";
     cout << PoA << endl;
 
-    cout<<"rating"<<" : ";
+    cout<<"rating : ";
     cout << rating << endl;
 
-    cout<<"mobile number"<<" : ";
+    cout<<"mobile number : ";
     cout << phone << endl;
 
-    cout<<"email-id"<<" : ";
+    cout<<"email-id : ";
     cout <<  mail << endl;
 
     cout << endl;
