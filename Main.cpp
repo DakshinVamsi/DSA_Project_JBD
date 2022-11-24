@@ -3,8 +3,13 @@
 
 using namespace std;
 
-void show_list(list<doctor> List_of_Doctors)
+bool compare(doctor a, doctor b)
 {
+    return a.name[0] > b.name[0];
+}
+
+void show_list(list<doctor> List_of_Doctors)
+{   
     list <doctor> :: iterator it;
     for(it = List_of_Doctors.begin(); it != List_of_Doctors.end(); it++)
     {
@@ -13,6 +18,8 @@ void show_list(list<doctor> List_of_Doctors)
     }
 
 }
+
+
 
 int main()
 {
