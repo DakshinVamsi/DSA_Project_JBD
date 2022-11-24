@@ -75,4 +75,6 @@ void doctor::about_doctor()
 
     cout<<"email-id"<<" : ";
     cout <<  mail << endl;
+
+    cout << endl;
 }
