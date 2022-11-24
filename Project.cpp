@@ -76,6 +76,13 @@ void Delete(node* &head, string val){
     }
 }
 
+node* edit(node* head,string doc_name) {
+    node* temp = head ;
+    while(temp->name != doc_name ) temp = temp->next ;
+
+    return temp ;
+}
+
 bool search(node* &head, string val){
     node* temp = head;
 
@@ -246,6 +253,33 @@ int main(){
                         cout<<"\n";
                     }
                 }
+                }
+                else if(doc_service == 3) {
+                    string edit_name ;
+                    int edit_choice;
+                    cout << "Enter doctor's name : " ;
+                    cin >> edit_name;
+
+                    
+
+                    cout << "What do you want to edit? : " << endl ;
+                    cout << "1->Name" << endl ;
+                    cout << "2->Department" << endl ;
+                    cout << "3->Employment Type" << endl ;
+                    cout << "4->Period of Availability" << endl ;
+                    cout << "5->Phone" << endl ;
+                    cout << "6-Mail ID" << endl ;
+
+                    cin >> edit_choice ;
+                    switch(edit_choice) {
+                        case 1:
+                          string ed_name ;
+                          cin >> ed_name;
+                          edit(head,edit_name)->name = ed_name ;
+                          
+                    }
+
+
                 }
     }
 
