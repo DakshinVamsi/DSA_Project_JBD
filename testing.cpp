@@ -1,12 +1,29 @@
 #include <bits/stdc++.h>
-#include "New_function.h"
-
 using namespace std;
+#include "appointment.h"
 
 int main()
 {
-    doctor Mathew;
-    Mathew.add_new();
-    Mathew.about_doctor();
+    doctor mathew;
+    mathew.add_new();
+    mathew.create_slot();
+    //mathew.print_slots();
+    cout << mathew.no_of_slots << endl;
+    for(int i = 0; i < 2; i++)
+    {
+        create_apo(mathew);
+    }
+    //create_apo(mathew);
     return 0;
 }
+/*
+adsfg
+asg
+asdg
+12:00
+18:00
+1
+aasdf
+asdgrgh
+3
+*/

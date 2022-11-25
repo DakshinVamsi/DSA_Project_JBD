@@ -1,46 +1,149 @@
-// Appointment system
+#include <bits/stdc++.h>
+using  namespace std;
 
-
-vector<bool> Slots(n,1)  ;
-
-//Interface to be written in main file
-
-
-void NewAppointment(patient* x,doctor* head)  {
-    doctor* temp = head ;
-    int choice ;
-
-    string Doctor ;
-    cout << "Enter doctor's name: " ;
-    cin >> Doctor ;
-
-    while(temp != NULL) { 
-        if(strcmp(temp->name,Doctor)) break ;
-        temp = temp->next ;
-    }
-
-
-    cout << "Available time slots: " << endl ;
-    for(int i=0 ; i<Slots.size() ;i++) {
-        if(temp->Slots[i] == 1) cout << i+1<< ". " <<  i/3 << ':' << (i%3)*20 << " to " <<  (i+1)/3 << ":" << ((i+1)%3)*20  << endl ;
-
-    }
-
-    cout << "Choose slot:"  ;
-    cin >> choice ; 
-
-    temp->Slots[choice-1] = 0 ; //Slot gets booked
- 
-    
+float time(string str)
+{
+    //12:30 - 18:00
+    float timming(2);
+    timming = float(((int(str[0]) - 48)*10) + (int(str[1])*1 - 48)) + float(((int(str[3]) - 48)*10) + (int(str[4])*1 - 48))/60;
+    return timming;
 }
 
-int waiting_time(vector<bool> slots) {
-    int time;
-
-    for(int i=0;i<Slots.size();i++) {
-        if(i == 0) 
+class doctor{
+    public:
+    string name = "";
+    string department = "";
+    string  type = "";
+    string  PoA[2];
+    string rating = "";
+    string phone = "";
+    string mail = "";
+    string NoP = "";
+    float slots[100];
+    float no_of_slots = 0;
+    bool free_slots[100] = {0};
+    public:
+    void about_doctor();
+    void add_new();
+    void create_slot()
+    {
+        float start = time(PoA[0]);
+        float end = time(PoA[1]);
+        float curr = start;
+        for(int i = 0; i < (end - start)*2; i++)
+        {
+            slots[i] = curr;
+            curr += 0.5;
+            no_of_slots+= 0.5;
+        }
     }
-    return 
+    void print_slots();
+};
+
+void doctor::add_new()
+{    
+    cout<<"Enter doctors name : ";
+    cin >> name;
+
+    cout<<"Enter doctors department : ";
+    cin>>department;
+    //department = department;
+            
+    cout<<"Enter doctors type of employement : ";
+    cin>>type;
+    //d.type = type;
+
+    cout<<"Enter doctors period of availability : "<<endl;
+    cout << "From : ";
+    cin>>PoA[0];
+    cout << "To : ";
+    cin >> PoA[1];
+    //d.PoA = PoA;
+    create_slot();
+    cout<<"Enter doctors rating : ";
+    cin>>rating;
+    //d.rating = rating;
+
+    cout<<"Enter doctors mobile number : ";
+    cin>>phone;
+    //d.phone = phone;
+
+    cout<<"Enter doctors email-id : ";
+    cin>>mail;
+    //d.mail = mail;
+
+    cout<<"Enter number of patients he treated :" ;
+    cin>>NoP;
+    //d.NoP = NoP;
+}
 
 
-} 
+void doctor::about_doctor()
+{
+    cout<<"Name : ";
+    cout << name << endl;
+
+    cout<<"Department : ";
+    cout << department << endl;
+
+    cout<<"type of employement : ";
+    cout << type << endl;
+
+    cout<<"Period of availability : ";
+    cout << PoA[0] << "to"<<PoA[1] << endl;
+
+    cout<<"rating : ";
+    cout << rating << endl;
+
+    cout<<"mobile number : ";
+    cout << phone << endl;
+
+    cout<<"email-id : ";
+    cout <<  mail << endl;
+
+    cout << endl;
+}
+
+void doctor::print_slots()
+{
+    for(int i = 0; i < no_of_slots; i++)
+    {
+        if((int)slots[i] !=slots[i])
+        {
+            cout << (int)slots[i] << ":30" << ' ';
+        }
+        else
+        {
+            cout << slots[i] << ":00" << ' ';
+        }
+        //cout << slots[i] << ' ';
+    }
+    cout << endl;
+}
+
+void create_apo(doctor &doc)
+{
+    doc.print_slots();
+    string at_time;
+    cout << "Enter your prefered tim : ";
+    cin >>  at_time;
+    float time_in_float_form = time(at_time);
+    int curr = 0;
+    for(int i =0; i < doc.no_of_slots; i++)
+    {   
+        if(time_in_float_form == doc.slots[i])
+        {
+            curr = i;
+        }
+    }
+    cout << curr << endl;
+    if(doc.free_slots[curr] == false)
+    {
+        doc.free_slots[curr] = true;
+        cout << "slot is booked" << endl;
+    }
+    else
+    {   
+        cout << "Slot is already booked" << endl;
+    }
+}
