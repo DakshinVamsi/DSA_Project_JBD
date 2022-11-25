@@ -59,7 +59,7 @@ void display(node* head){
     node* temp = head;
     
     while(temp!= NULL){
-        cout<<temp->doc.name<<"\t \t \t \t \t ";
+        cout<<temp->doc.name<< " " << temp->doc.department << " " << temp->doc.phone << " " << temp->doc.mail << endl ;
         temp = temp->next;
     }
 }
@@ -133,14 +133,29 @@ class patient: public doctor{
 
 int main(){
     node* head = NULL;
-    string File_name;
-    ifstream MyReadFile("name.txt");
-    // while (getline (MyReadFile, File_name)) {
-    //         //  cout<<File_name;
-    //         insertEnd(head,File_name);
-    //         }   
 
-    // MyReadFile.close();
+    ifstream MyReadFile;
+    MyReadFile.open("BM2043_PROJECT_DATA.csv");
+    string line = "" ;
+    string inputString ;
+    getline(MyReadFile,line) ;
+    line = "" ;
+    cout << "DATA" << endl ;
+
+    while(getline(MyReadFile,line)) {
+        doctor New ;
+        stringstream  inputString(line) ;
+        getline(inputString,New.name,',');
+        getline(inputString,New.mail,',');
+        getline(inputString,New.phone,',');
+        getline(inputString,New.type,',');
+        getline(inputString,New.department,',');
+        getline(inputString,New.rating,',');
+        getline(inputString,New.NoP,',');
+
+        if(!search(head,New.name)) insertEnd(head,New) ; 
+    }
+    
 
     
     cout<<"Welcome to IITH Help-desk"<<endl;
@@ -238,68 +253,67 @@ int main(){
                     else{
                         show = true;
                     }
-                } }
+                } 
                 
-                // else if(doc_service == 3) {
-                //     string edit_name ;
-                //     int edit_choice;
-                //     cout << "Enter doctor's name : " ;
-                //     cin >> edit_name;
+            // case 3 :
+            //     string edit_name ;
+            //     int edit_choice;
+            //     cout << "Enter doctor's name : " ;
+            //     cin >> edit_name;
 
                 
-                //     cout << "What do you want to edit? : " << endl ;
-                //     cout << "1->Name" << endl ;
-                //     cout << "2->Department" << endl ;
-                //     cout << "3->Employment Type" << endl ;
-                //     cout << "4->Period of Availability" << endl ;
-                //     cout << "5->Phone" << endl ;
-                //     cout << "6-Mail ID" << endl ;
+            //     cout << "What do you want to edit? : " << endl ;
+            //     cout << "1->Name" << endl ;
+            //     cout << "2->Department" << endl ;
+            //     cout << "3->Employment Type" << endl ;
+            //     cout << "4->Period of Availability" << endl ;
+            //     cout << "5->Phone" << endl ;
+            //     cout << "6-Mail ID" << endl ;
 
-                //     cin >> edit_choice ;
-                //     switch(edit_choice) {
-                //         case 1:
-                //           string ed_name ;
-                //           cout << "Enter new name: " ;
-                //           cin >> ed_name;
-                //           edit(head,edit_name)->doc.name = ed_name ;
-                //         case 2:
-                //           string ed_dep ;
-                //           cout << "Enter new department: " ;
-                //           cin >> ed_dep;
-                //           edit(head,edit_name)->doc.department = ed_name ;
-                //         case 3:
-                //           string ed_etype ;
-                //           cout << "Enter new employment type: " ;
-                //           cin >> ed_etype;
-                //           edit(head,edit_name)->doc.type = ed_name ;
-                //         case 4:
-                //           string ed_poa ;
-                //           cout << "Enter new period of availability: " ;
-                //           cin >> ed_poa;
-                //           edit(head,edit_name)->doc.PoA = ed_name ;
-                //         case 5:
-                //           string ed_num ;
-                //           cout << "Enter new number: " ;
-                //           cin >> ed_num;
-                //           edit(head,edit_name)->doc.phone = ed_name ;
-                //         case 6:
-                //           string ed_mail ;
-                //           cout << "Enter new email: " ;
-                //           cin >> ed_mail;
-                //           edit(head,edit_name)->doc.mail = ed_name ;        
+            //     cin >> edit_choice ;
+            //     switch(edit_choice) {
+            //         case 1:
+            //             string ed_name ;
+            //             cout << "Enter new name: " ;
+            //             cin >> ed_name;
+            //             edit(head,edit_name)->doc.name = ed_name ;
+            //         case 2:
+            //               string ed_dep ;
+            //               cout << "Enter new department: " ;
+            //               cin >> ed_dep;
+            //               edit(head,edit_name)->doc.department = ed_name ;
+            //         case 3:
+            //               string ed_etype ;
+            //               cout << "Enter new employment type: " ;
+            //               cin >> ed_etype;
+            //               edit(head,edit_name)->doc.type = ed_name ;
+            //         case 4:
+            //               string ed_poa ;
+            //               cout << "Enter new period of availability: " ;
+            //               cin >> ed_poa;
+            //               edit(head,edit_name)->doc.PoA = ed_name ;
+            //         case 5:
+            //               string ed_num ;
+            //               cout << "Enter new number: " ;
+            //               cin >> ed_num;
+            //               edit(head,edit_name)->doc.phone = ed_name ;
+            //         case 6:
+            //               string ed_mail ;
+            //               cout << "Enter new email: " ;
+            //               cin >> ed_mail;
+            //               edit(head,edit_name)->doc.mail = ed_name ;        
                           
-                //     }
-                //     cout<<"Do you want to exit?(yes/no)"<<endl;
-                //     cin>>exit;
+            //         }
+            //         cout<<"Do you want to exit?(yes/no)"<<endl;
+            //         cin>>exit;
 
-                //     if(exit == "yes"){
-                //         show = false;
-                //      }
-                //     else{
-                //         show = true;
-                //     }
-                // }           
-    }
+            //         if(exit == "yes"){
+            //             show = false;
+            //          }
+            //         else{
+            //             show = true;
+            //         }
+                }           
+    } }
 
     
-}

@@ -8,10 +8,10 @@ class doctor{
     string department = "";
     string  type = "";
     string  PoA = "";
-    float rating = 0;
+    string rating = "";
     string phone = "";
     string mail = "";
-    int NoP = -1;
+    string NoP = "";
     public:
     void about_doctor();
     void add_new();
