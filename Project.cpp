@@ -8,18 +8,8 @@ using namespace std;
 #include <cstdio>
 #include <string.h>
 
-//doctors data
-class doctor{
-    public:
-    string name = "";
-    string department = "";
-    string  type = "";
-    string  PoA = "";
-    float rating = 0;
-    string phone = "";
-    string mail = "";
-    int NoP = -1;
-};
+#include "Doctors.h"
+
 
 class node{
     public:
@@ -207,38 +197,7 @@ int main(){
                     int NoP;
 
                     doctor new_doctor;
-                    cout<<"Enter doctors name"<<" : ";
-                    cin>>name;
-                    new_doctor.name = name;
-
-                    cout<<"Enter doctors department"<<" : ";
-                    cin>>department;
-                    new_doctor.department = department;
-                    
-                    cout<<"Enter doctors type of employement"<<" : ";
-                    cin>>type;
-                    new_doctor.type = type;
-
-                    cout<<"Enter doctors period of availability"<<" : ";
-                    cin>>PoA;
-                    new_doctor.PoA = PoA;
-
-                    cout<<"Enter doctors rating"<<" : ";
-                    cin>>rating;
-                    new_doctor.rating = rating;
-
-                    cout<<"Enter doctors mobile number"<<" : ";
-                    cin>>phone;
-                    new_doctor.phone = phone;
-
-                    cout<<"Enter doctors email-id"<<" : ";
-                    cin>>mail;
-                    new_doctor.mail = mail;
-
-                    cout<<"Enter number of patients he treated"<<" :" ;
-                    cin>>NoP;
-                    new_doctor.NoP = NoP;
-
+                    new_doctor.add_new();
                     insertEnd(head, new_doctor);
                     cout<<"details successfully uploaded into doctors directory"<<endl;
                     cout<<"\n";
