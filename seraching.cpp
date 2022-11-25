@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 #include "Doctors.h"
-
 using namespace std;
 
 void search_using_name(string my_name, list<doctor> List_of_doctors)
