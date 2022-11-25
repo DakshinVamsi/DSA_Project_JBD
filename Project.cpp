@@ -145,12 +145,12 @@ int main(){
     node* head = NULL;
     string File_name;
     ifstream MyReadFile("name.txt");
-    // while (getline (MyReadFile, File_name)) {
-    //         //  cout<<File_name;
-    //         insertEnd(head,File_name);
-    //         }   
+    while (getline (MyReadFile, File_name)) {
+            //  cout<<File_name;
+            insertEnd(head,File_name);
+            }   
 
-    // MyReadFile.close();
+    MyReadFile.close();
 
     
     cout<<"Welcome to IITH Help-desk"<<endl;
@@ -278,6 +278,14 @@ int main(){
                     else{
                         cout<<"Doctors name not found"<<endl;
                         cout<<"\n";
+                    }
+                    cout<<"Do you want to exit?(yes/no)"<<endl;
+                    cin>>exit;
+                    if(exit == "yes"){
+                        show = false;
+                     }
+                    else{
+                        show = true;
                     }
                 } }
                 
