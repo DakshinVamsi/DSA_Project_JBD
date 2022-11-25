@@ -135,12 +135,12 @@ int main(){
     node* head = NULL;
     string File_name;
     ifstream MyReadFile("name.txt");
-    while (getline (MyReadFile, File_name)) {
-            //  cout<<File_name;
-            insertEnd(head,File_name);
-            }   
+    // while (getline (MyReadFile, File_name)) {
+    //         //  cout<<File_name;
+    //         insertEnd(head,File_name);
+    //         }   
 
-    MyReadFile.close();
+    // MyReadFile.close();
 
     
     cout<<"Welcome to IITH Help-desk"<<endl;
@@ -187,14 +187,6 @@ int main(){
                 float add_delete_doc;
                 cin>>add_delete_doc;
                 if(add_delete_doc == 1){
-                    string name;
-                    string department;
-                    string  type;
-                    string  PoA;
-                    float rating;
-                    string phone;
-                    string mail;
-                    int NoP;
 
                     doctor new_doctor;
                     new_doctor.add_new();
