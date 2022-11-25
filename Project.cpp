@@ -227,6 +227,14 @@ int main(){
         cout<<"2 -> To add/delete doctors details"<<endl;
         cout<<"3 -> To edit present doctors details"<<endl;
         cout<<"\n";
+        cout << "Appointment system\n" << endl  ;
+        cout << "4 -> Book an appointment" << endl ;
+        cout << "5 -> Reschedule an appointment" << endl ;
+        cout << "6 -> Cancel an appointment\n" << endl ;
+
+        cout << "Patients log\n" << endl ;
+        cout << "7 -> To view patients directory" << endl ;
+
 
         //Vector for storing all doctors data
         vector<doctor> doc;
@@ -315,6 +323,31 @@ int main(){
                 
             case 3:
                 edit_doctor(head);
+                cout<<"Do you want to exit?(yes/no)"<<endl;
+                    cin>>exit;
+                    if(exit == "yes"){
+                        show = false;
+                     }
+                    else{
+                        show = true;
+                    }
+            
+            
+            case 4:
+                string choose_dep ;
+                cout << "Enter department : " ;
+                cin >> choose_dep ;
+                dep(head,choose_dep) ;
+                cout<<"Do you want to exit?(yes/no)"<<endl;
+                    cin>>exit;
+                    if(exit == "yes"){
+                        show = false;
+                     }
+                    else{
+                        show = true;
+                    }
+
+
                 }           
     } }
 
