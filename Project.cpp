@@ -8,7 +8,9 @@ using namespace std;
 #include <cstdio>
 #include <string.h>
 
-#include "Doctors.h"
+#include "Patients.h"
+
+
 
 
 class node{
@@ -18,6 +20,17 @@ class node{
 
     node(doctor val){
         doc = val;
+        next = NULL;
+    }
+};
+
+class node_pat{
+    public:
+    patient pat;
+    node_pat* next;
+
+    node_pat(patient val){
+        pat = val;
         next = NULL;
     }
 };
@@ -63,6 +76,48 @@ void display(node* head){
         temp = temp->next;
     }
 }
+
+void display_pat(node_pat* head){
+    node_pat* temp = head;
+    
+    while(temp!= NULL){
+        cout<<temp->pat.st_name<< " " << temp->pat.dep << " " << temp->pat.phone << " " << temp->pat.mail << endl ;
+        temp = temp->next;
+    }
+}
+
+void insertEnd_pat(node_pat* &head, patient val){
+    node_pat* ptr = new node_pat(val);
+    node_pat* a;
+
+    if(head == NULL){
+        head = ptr;
+        return;
+    }
+    node_pat* temp = head; 
+
+    if(strcmp(val.st_name.c_str(),temp->pat.st_name.c_str())<0) {
+        ptr->next = head ;
+        head = ptr ;
+    }
+
+    else {
+
+    while(temp->next != NULL )
+    {
+        if(strcmp(val.st_name.c_str(),(temp->next->pat).st_name.c_str())<0) break ;
+       temp = temp->next; 
+    }
+    // temp->next = ptr;
+    if(temp->next == NULL) {
+    temp->next = ptr;
+    ptr->next = NULL ;}
+    else {
+        a = temp->next ;
+        temp ->next = ptr ;
+        ptr ->next = a ;
+    }
+} }
 
 void Delete(node* &head, string val){
     node* temp = head;
@@ -179,22 +234,25 @@ void edit_doctor(node* head)
     }
 }
 
-//patients data
-class patient: public doctor{
-    public:
-    string st_name;
-    string dep;
-    string ToS;
-    string roll_no;
-    string PNo;
-    string email;
-    string adress;
-    doctor previous_visits[10];
-    int ethics_rating;
-};
+
+
+// //patients data
+// class patient: public doctor{
+//     public:
+//     string st_name;
+//     string dep;
+//     string ToS;
+//     string roll_no;
+//     string PNo;
+//     string email;
+//     string adress;
+//     doctor previous_visits[10];
+//     int ethics_rating;
+// };
 
 int main(){
     node* head = NULL;
+    node_pat* head_pat = NULL;
 
     ifstream MyReadFile;
     MyReadFile.open("BM2043_PROJECT_DATA.csv");
@@ -232,12 +290,11 @@ int main(){
         cout << "---------------------------------------------\n" << endl ; 
         cout << "Appointment system\n" << endl  ;
         cout << "4 -> Book an appointment" << endl ;
-        cout << "5 -> Reschedule an appointment" << endl ;
-        cout << "6 -> Cancel an appointment\n" << endl ;
+        cout << "5 -> Cancel an appointment\n" << endl ;
         cout << "---------------------------------------------\n" << endl ; 
 
         cout << "Patients log\n" << endl ;
-        cout << "7 -> To view patients directory\n"  ;
+        cout << "6 -> To view patients directory\n"  ;
         cout << "---------------------------------------------\n" << endl ; 
 
 
@@ -274,6 +331,7 @@ int main(){
                 if(add_delete_doc == 1){
 
                     doctor new_doctor;
+                    new_doctor.create_slot() ;
                     new_doctor.add_new();
                     insertEnd(head, new_doctor);
                     cout<<"details successfully uploaded into doctors directory"<<endl;
@@ -285,9 +343,9 @@ int main(){
                     // // Close the file
                     // MyFile.close();
 
-                    std::ofstream outfile;
-                    outfile.open("name.txt", std::ios_base::app); // append instead of overwrite
-                    outfile <<new_doctor.name; 
+                    // std::ofstream outfile;
+                    // outfile.open("name.txt", std::ios_base::app); // append instead of overwrite
+                    // outfile <<new_doctor.name; 
 
                     
                     cout<<"\n";
@@ -338,10 +396,18 @@ int main(){
             
             
             else if(doc_service == 4) {
-                string choose_dep ;
-                cout << "Enter department : " ;
-                cin >> choose_dep ;
-                dep(head,choose_dep) ;
+                patient new_patient;
+                new_patient.add_new_patient();
+                cout << endl ;
+
+                dep(head,new_patient.dep) ;
+                cout << endl ;
+                string ch_doc ;
+                cout << "Enter doctor's name: " ;
+                cin >> ch_doc ;
+                create_apo(edit(head,ch_doc)->doc,new_patient);
+                insertEnd_pat(head_pat,new_patient);
+
                 cout<<"Do you want to exit?(yes/no)"<<endl;
                     cin>>exit;
                     if(exit == "yes"){
@@ -350,6 +416,25 @@ int main(){
                     else{
                         show = true;
                     } }
+            else if(doc_service == 6) {
+                cout<<endl;
+                cout<<"Patients"<<endl;
+                display_pat(head_pat);
+
+                cout<<"\n";
+                cout<<endl;
+                cout<<"Do you want to exit?(yes/no)"<<endl;
+                cin>>exit;
+
+                if(exit == "yes"){
+                        show = false;
+                    }
+                    else{
+                        show = true;
+                    }
+
+                
+            }
          
     } }
 
