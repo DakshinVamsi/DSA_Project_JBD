@@ -198,7 +198,6 @@ int main(){
     string inputString ;
     getline(MyReadFile,line) ;
     line = "" ;
-    cout << "DATA" << endl ;
 
     while(getline(MyReadFile,line)) {
         doctor New ;
@@ -216,7 +215,7 @@ int main(){
     
 
     
-    cout<<"Welcome to IITH Help-desk"<<endl;
+    cout<<"* * * * * Welcome to IITH Help-desk * * * * *"<<endl;
     cout<<"\n";
     bool show = true;
     string exit;
@@ -226,14 +225,16 @@ int main(){
         cout<<"1 -> To view doctors directory"<<endl;
         cout<<"2 -> To add/delete doctors details"<<endl;
         cout<<"3 -> To edit present doctors details"<<endl;
-        cout<<"\n";
+        cout << "---------------------------------------------\n" << endl ; 
         cout << "Appointment system\n" << endl  ;
         cout << "4 -> Book an appointment" << endl ;
         cout << "5 -> Reschedule an appointment" << endl ;
         cout << "6 -> Cancel an appointment\n" << endl ;
+        cout << "---------------------------------------------\n" << endl ; 
 
         cout << "Patients log\n" << endl ;
-        cout << "7 -> To view patients directory" << endl ;
+        cout << "7 -> To view patients directory\n"  ;
+        cout << "---------------------------------------------\n" << endl ; 
 
 
         //Vector for storing all doctors data
@@ -243,8 +244,7 @@ int main(){
         int doc_service;
         cin>>doc_service;
 
-        switch(doc_service) {
-            case 1 :
+            if(doc_service == 1) {
                 cout<<endl;
                 cout<<"Doctors"<<endl;
                 display(head);
@@ -259,9 +259,9 @@ int main(){
                     }
                     else{
                         show = true;
-                    }
+                    } }
         
-            case 2 :
+            else if(doc_service == 2) {
                 cout<<"1 -> To add new doctors details"<<endl;
                 cout<<"2 -> To delete present doctors details"<<endl;
                 cout<<"\n";
@@ -319,9 +319,9 @@ int main(){
                     else{
                         show = true;
                     }
-                } 
+                }  }
                 
-            case 3:
+            else if(doc_service == 3) {
                 edit_doctor(head);
                 cout<<"Do you want to exit?(yes/no)"<<endl;
                     cin>>exit;
@@ -330,10 +330,10 @@ int main(){
                      }
                     else{
                         show = true;
-                    }
+                    } }
             
             
-            case 4:
+            else if(doc_service == 4) {
                 string choose_dep ;
                 cout << "Enter department : " ;
                 cin >> choose_dep ;
@@ -345,10 +345,8 @@ int main(){
                      }
                     else{
                         show = true;
-                    }
-
-
-                }           
+                    } }
+         
     } }
 
     
