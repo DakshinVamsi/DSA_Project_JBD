@@ -13,6 +13,6 @@ class patient
     string email;
     string adress;
     doctor previous_visits[50];
-    int no_pre_visits = 0;
+    int no_pre_visits = -1;
     int ethics_rating;
 };

@@ -45,8 +45,6 @@ void doctor::print_slots()
 {
     for(int i = 0; i < no_of_slots; i++)
     {
-        if(free_slots[i]  == false)
-        {
             if((int)slots[i] != slots[i])
             {
                 cout << (int)slots[i] << ":30" << ' ';
@@ -55,7 +53,6 @@ void doctor::print_slots()
             {
                 cout << slots[i] << ":00" << ' ';
             }
-        }
         //cout << slots[i] << ' ';
     }
     cout << endl;
