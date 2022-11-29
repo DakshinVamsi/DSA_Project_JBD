@@ -189,7 +189,7 @@ class patient: public doctor{
     string PNo;
     string email;
     string adress;
-    string history;
+    doctor previous_visits[10];
     int ethics_rating;
 };
 

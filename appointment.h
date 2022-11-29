@@ -6,20 +6,23 @@ void doctor::print_slots()
 {
     for(int i = 0; i < no_of_slots; i++)
     {
-        if((int)slots[i] !=slots[i])
+        if(free_slots[i]  == false)
         {
-            cout << (int)slots[i] << ":30" << ' ';
-        }
-        else
-        {
-            cout << slots[i] << ":00" << ' ';
+            if((int)slots[i] != slots[i])
+            {
+                cout << (int)slots[i] << ":30" << ' ';
+            }
+            else
+            {
+                cout << slots[i] << ":00" << ' ';
+            }
         }
         //cout << slots[i] << ' ';
     }
     cout << endl;
 }
 
-void create_apo(doctor &doc)
+void create_apo(doctor &doc, patient &pat)
 {
     doc.print_slots();
     string at_time;
@@ -38,10 +41,12 @@ void create_apo(doctor &doc)
     if(doc.free_slots[curr] == false)
     {
         doc.free_slots[curr] = true;
-        cout << "slot is booked" << endl;
+        pat.no_of_prev += 1;
+        pat.previous_visits[pat.]
+        cout << "Slot is booked" << endl;
     }
     else
     {   
-        cout << "Slot is already booked" << endl;
+        cout << "Slot is Unavailable" << endl;
     }
 }
