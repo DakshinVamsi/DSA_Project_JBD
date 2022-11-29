@@ -41,6 +41,25 @@ class doctor{
     void print_slots();
 };
 
+void doctor::print_slots()
+{
+    for(int i = 0; i < no_of_slots; i++)
+    {
+        if(free_slots[i]  == false)
+        {
+            if((int)slots[i] != slots[i])
+            {
+                cout << (int)slots[i] << ":30" << ' ';
+            }
+            else
+            {
+                cout << slots[i] << ":00" << ' ';
+            }
+        }
+        //cout << slots[i] << ' ';
+    }
+    cout << endl;
+}
 
 
 void doctor::add_new()
@@ -106,18 +125,3 @@ void doctor::about_doctor()
 
     cout << endl;
 }
-
-class patient
-{
-    public:
-    string st_name;
-    string dep;
-    string ToS;
-    string roll_no;
-    string PNo;
-    string email;
-    string adress;
-    doctor previous_visits[50];
-    int no_pre_visits = 0;
-    int ethics_rating;
-};

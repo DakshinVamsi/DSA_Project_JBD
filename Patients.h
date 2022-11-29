@@ -2,25 +2,23 @@
 using  namespace std;
 #include "Doctors.h"
 
-void doctor::print_slots()
+class patient
 {
-    for(int i = 0; i < no_of_slots; i++)
-    {
-        if(free_slots[i]  == false)
-        {
-            if((int)slots[i] != slots[i])
-            {
-                cout << (int)slots[i] << ":30" << ' ';
-            }
-            else
-            {
-                cout << slots[i] << ":00" << ' ';
-            }
-        }
-        //cout << slots[i] << ' ';
-    }
-    cout << endl;
-}
+    public:
+    string st_name;
+    string dep;
+    string ToS;
+    string roll_no;
+    string PNo;
+    string email;
+    string adress;
+    doctor previous_visits[50];
+    int no_pre_visits = 0;
+    int ethics_rating;
+    public:
+    //void create_apo(doctor &doc);
+};
+
 
 void create_apo(doctor &doc, patient &pat)
 {
@@ -41,12 +39,12 @@ void create_apo(doctor &doc, patient &pat)
     if(doc.free_slots[curr] == false)
     {
         doc.free_slots[curr] = true;
-        pat.no_of_prev += 1;
-        pat.previous_visits[pat.]
+        pat.no_pre_visits += 1;
+        pat.previous_visits[pat.no_pre_visits] = doc;
         cout << "Slot is booked" << endl;
     }
     else
     {   
-        cout << "Slot is Unavailable" << endl;
+        cout << "Slot is Unavilable" << endl;
     }
 }
