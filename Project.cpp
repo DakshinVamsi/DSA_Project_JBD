@@ -154,10 +154,14 @@ void edit_doctor(node* head)
     }
     else if(edit_choice == 4)
     {
-        string ed_PoA;
-        cout << "Enter new Period of Availability: ";
-        cin >> ed_PoA;
-        edit(head, edit_name)->doc.PoA = ed_PoA;
+        string ed_PoA_from, ed_PoA_to;
+        cout << "Enter new Period of Availability:" << endl;
+        cout << "From :";
+        cin >> ed_PoA_from;
+        cout << "To :";
+        cin >> ed_PoA_to;
+        edit(head, edit_name)->doc.PoA[0] = ed_PoA_from;
+        edit(head, edit_name)->doc.PoA[1] = ed_PoA_to;
     }
     else if(edit_choice == 5)
     {
@@ -171,7 +175,7 @@ void edit_doctor(node* head)
         string ed_mail;
         cout << "Enter new Mail-Id: ";
         cin >> ed_mail;
-        edit(head, edit_name)->doc.PoA = ed_mail;
+        edit(head, edit_name)->doc.mail = ed_mail;
     }
 }
 

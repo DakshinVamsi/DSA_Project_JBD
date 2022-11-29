@@ -1,21 +1,46 @@
 #include  <bits/stdc++.h>
 using namespace std;
 
+float time(string str)
+{
+    //12:30 - 18:00
+    float timming(2);
+    timming = float(((int(str[0]) - 48)*10) + (int(str[1])*1 - 48)) + float(((int(str[3]) - 48)*10) + (int(str[4])*1 - 48))/60;
+    return timming;
+}
+
 //doctors data
 class doctor{
     public:
     string name = "";
     string department = "";
     string  type = "";
-    string  PoA = "";
+    string  PoA[2];
     string rating = "";
     string phone = "";
     string mail = "";
     string NoP = "";
+    float slots[100];
+    float no_of_slots = 0;
+    bool free_slots[100] = {0};
     public:
     void about_doctor();
     void add_new();
+    void create_slot()
+    {
+        float start = time(PoA[0]);
+        float end = time(PoA[1]);
+        float curr = start;
+        for(int i = 0; i < (end - start)*2; i++)
+        {
+            slots[i] = curr;
+            curr += 0.5;
+            no_of_slots+= 0.5;
+        }
+    }
+    void print_slots();
 };
+
 
 
 void doctor::add_new()
@@ -31,10 +56,13 @@ void doctor::add_new()
     cin>>type;
     //d.type = type;
 
-    cout<<"Enter doctors period of availability : ";
-    cin>>PoA;
+    cout<<"Enter doctors period of availability : "<<endl;
+    cout << "From : ";
+    cin>>PoA[0];
+    cout << "To : ";
+    cin >> PoA[1];
     //d.PoA = PoA;
-
+    create_slot();
     cout<<"Enter doctors rating : ";
     cin>>rating;
     //d.rating = rating;
@@ -52,6 +80,7 @@ void doctor::add_new()
     //d.NoP = NoP;
 }
 
+
 void doctor::about_doctor()
 {
     cout<<"Name : ";
@@ -63,8 +92,8 @@ void doctor::about_doctor()
     cout<<"type of employement : ";
     cout << type << endl;
 
-    cout<<"period of availability : ";
-    cout << PoA << endl;
+    cout<<"Period of availability : ";
+    cout << PoA[0] << "to"<<PoA[1] << endl;
 
     cout<<"rating : ";
     cout << rating << endl;
