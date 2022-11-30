@@ -146,6 +146,13 @@ node* edit(node* head,string doc_name) {
     return temp ;
 }
 
+node_pat* edit_pat(node_pat* head,string pat_name) {
+    node_pat* temp = head ;
+    while(temp->pat.st_name != pat_name ) temp = temp->next ;
+
+    return temp ;
+}
+
 bool search(node* &head, string val){
     node* temp = head;
 
@@ -295,6 +302,7 @@ int main(){
 
         cout << "Patients log\n" << endl ;
         cout << "6 -> To view patients directory\n"  ;
+        cout << "7 -> Give feedback" ;
         cout << "---------------------------------------------\n" << endl ; 
 
 
@@ -334,19 +342,20 @@ int main(){
                     new_doctor.create_slot() ;
                     new_doctor.add_new();
                     insertEnd(head, new_doctor);
+                    fstream fout;   
+  
+    
+                    fout.open("BM2043_PROJECT_DATA.csv", ios::out | ios::app);
+                    fout << new_doctor.name << ", ";
+                    fout << new_doctor.mail << ", ";
+                    fout << new_doctor.phone << ", ";
+                    fout << new_doctor.type << ", ";
+                    fout << new_doctor.department << ", ";
+                    fout << new_doctor.rating << ", ";
+
                     cout<<"details successfully uploaded into doctors directory"<<endl;
                     cout<<"\n";
                     
-                    // ofstream MyFile("name.txt");
-                    // // Write to the file
-                    // MyFile.append(new_doctor.name);
-                    // // Close the file
-                    // MyFile.close();
-
-                    // std::ofstream outfile;
-                    // outfile.open("name.txt", std::ios_base::app); // append instead of overwrite
-                    // outfile <<new_doctor.name; 
-
                     
                     cout<<"\n";
                     
@@ -434,6 +443,19 @@ int main(){
                     }
 
                 
+            }
+            else if(doc_service == 7) {
+                string pat_name;
+                cin >> pat_name ;
+                // node_pat* x ;
+                // doctor y;
+                // x = edit_pat(head_pat,pat_name);
+                // y = x->pat.previous_visits[x->pat.no_pre_visits-1] ;
+                // int rate;
+                // cin >> rate ;
+                // y.rating = 
+
+
             }
          
     } }
