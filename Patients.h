@@ -62,7 +62,7 @@ void create_apo(doctor &doc, patient &pat)
             curr = i;
         }
     }
-    cout << curr << endl;
+    cout <<"Slot " << curr+1 << "is booked" << endl;
     if(doc.free_slots[curr] == false)
     {
         doc.free_slots[curr] = true;
