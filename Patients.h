@@ -15,7 +15,7 @@ class patient
     doctor previous_visits[50];
     string cur_booked_slot = "";
     int no_pre_visits = -1;
-    int ethics_rating = 0;
+    string ethics_rating = "";
     public:
     void add_new_patient();
 };
@@ -70,6 +70,7 @@ void create_apo(doctor &doc, patient &pat)
         pat.previous_visits[pat.no_pre_visits] = doc;
         pat.cur_booked_slot = at_time;
         cout << "Slot is booked" << endl;
+        
     }
     else
     {   

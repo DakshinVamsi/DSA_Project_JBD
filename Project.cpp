@@ -169,6 +169,22 @@ bool search(node* &head, string val){
     return true;
 }
 
+bool search_pat(node_pat* &head, string val){
+    node_pat* temp = head;
+
+    if(head == NULL){
+        return false;
+    }
+
+    while(temp->pat.st_name != val){
+        temp = temp->next;
+        if(temp == NULL){
+            return false;
+        }
+    }
+    return true;
+}
+
 void dep(node* head,string dept) {
     node* temp = head ;
     while(temp != NULL) {
@@ -281,9 +297,33 @@ int main(){
 
         if(!search(head,New.name)) insertEnd(head,New) ; 
     }
+
+
+    MyReadFile.open("BM2043_PATIENTS.csv");
+    string line_pat = "" ;
+    string inputString_pat ;
+    getline(MyReadFile,line_pat) ;
+    line_pat = "" ;
+
+    while(getline(MyReadFile,line_pat)) {
+        patient New ;
+        stringstream  inputString_pat(line_pat) ;
+        getline(inputString_pat,New.st_name,',');
+        getline(inputString_pat,New.ToE,',');
+        getline(inputString_pat,New.dep,',');
+        getline(inputString_pat,New.mail,',');
+        getline(inputString_pat,New.id,',');
+        getline(inputString_pat,New.phone,',');
+        getline(inputString_pat,New.ethics_rating,',');
+        getline(inputString_pat,New.address,',');
+
+
+        if(!search_pat(head_pat,New.st_name)) insertEnd_pat(head_pat,New) ; 
+    }
+
+    stack<pair<doctor,string>> s;
     
 
-    
     cout<<"* * * * * Welcome to IITH Help-desk * * * * *"<<endl;
     cout<<"\n";
     bool show = true;
@@ -302,7 +342,7 @@ int main(){
 
         cout << "Patients log\n" << endl ;
         cout << "6 -> To view patients directory\n"  ;
-        cout << "7 -> Give feedback" ;
+        cout << "7 -> Give feedback" << endl;
         cout << "---------------------------------------------\n" << endl ; 
 
 
@@ -446,15 +486,28 @@ int main(){
             }
             else if(doc_service == 7) {
                 string pat_name;
+                cout << "Enter patients name: " ;
                 cin >> pat_name ;
-                // node_pat* x ;
-                // doctor y;
-                // x = edit_pat(head_pat,pat_name);
-                // y = x->pat.previous_visits[x->pat.no_pre_visits-1] ;
-                // int rate;
-                // cin >> rate ;
-                // y.rating = 
+                node_pat* x ;
+                doctor y;
+                x = edit_pat(head_pat,pat_name);
+                y = x->pat.previous_visits[x->pat.no_pre_visits-1] ;
+                string feed;
+                cout << "Enter feedback for the doctor" ;
+                cin >> feed ;
+                s.push({y,feed}) ;
 
+                cout<<"\n";
+                cout<<endl;
+                cout<<"Do you want to exit?(yes/no)"<<endl;
+                cin>>exit;
+
+                if(exit == "yes"){
+                        show = false;
+                    }
+                    else{
+                        show = true;
+                    }
 
             }
          
